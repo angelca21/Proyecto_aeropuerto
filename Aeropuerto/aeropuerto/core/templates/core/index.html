@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Seleccionar opción</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
+    <style>
+        body {
+            background-image: url('static/core/img/aero2.webp');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+        }
+
+        .card {
+            width: 400px;
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .card-header {
+            background-color: #f8f9fa;
+            text-align: center;
+            padding: 20px 0;
+            border-bottom: none;
+        }
+
+        .card-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 0;
+        }
+
+        .card-body {
+            text-align: center;
+            padding: 40px;
+        }
+
+        .btn-chofer {
+            background-color: #007bff;
+            color: #fff;
+            border-color: #007bff;
+            padding: 12px 30px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .btn-chofer:hover {
+            background-color: #0069d9;
+            border-color: #0062cc;
+        }
+
+        .btn-pasajero {
+            background-color: #28a745;
+            color: #fff;
+            border-color: #28a745;
+            padding: 12px 30px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .btn-pasajero:hover {
+            background-color: #218838;
+            border-color: #1e7e34;
+        }
+
+        .navbar {
+            background-color: #333;
+            color: #fff;
+        }
+
+        .navbar-brand {
+            color: #fff !important;
+        }
+
+        .welcome-container {
+            margin-top: 100px;
+            text-align: center;
+            color: #fff;
+        }
+
+        .welcome-container h2 {
+            margin-bottom: 30px;
+        }
+
+        .welcome-container img {
+            max-width: 400px;
+            margin-bottom: 20px;
+        }
+
+        .welcome-container p {
+            font-size: 18px;
+            line-height: 1.5;
+        }
+
+        .navbar-nav.ml-auto {
+            margin-left: auto;      
+        }
+
+        .navbar-nav.mr-auto {
+            margin-right: auto;        
+        }
+
+        .navbar-nav li {
+            margin-right: 10px;            
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <button type="button" class="btn btn-link" onclick="location.href='/'" position="margin-left">Inicio</button>
+            </li>
+            
+        </ul>
+    </nav>
+
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <h1 class="card-title">Selecciona tu opción</h1>
+            </div>
+            <div class="card-body">
+                <a href="home" class="btn btn-chofer">Soy Chofer</a>
+                <a href="home2" class="btn btn-pasajero">Soy Pasajero</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Tu código adicional aquí
+        });
+    </script>
+</body>
+</html>

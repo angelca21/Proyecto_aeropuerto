@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registrarse</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
+    <style>
+        body {
+            background-image: url('/static/core/img/aero.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .navbar {
+            background-color: #333;
+            color: #fff;
+        }
+
+        .navbar-brand {
+            color: #fff !important;
+        }
+
+        .login-container {
+            margin-top: 100px;
+            max-width: 400px;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .login-container h2 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .form-group label {
+            font-weight: bold;
+        }
+
+        .form-group input {
+            border-radius: 3px;
+        }
+
+        .form-group button {
+            margin-top: 20px;
+        }
+
+        .navbar-nav.ml-auto {
+            margin-left: auto;      
+        }
+
+        .navbar-nav.mr-auto {
+            margin-right: auto;        
+        }
+
+        .navbar-nav li {
+            margin-right: 10px;
+            
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <button type="button" class="btn btn-link" onclick="location.href='/'" position="margin-left">Inicio</button>
+                </li>
+            </ul>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <button type="button" class="btn btn-link" onclick="location.href='/login'" position="margin-right">Iniciar Sesión</button>
+                </li>
+                <li class="nav-item">
+                  <button type="button" class="btn btn-link" onclick="location.href='/register'" position="margin-right">Registrarse</button>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="login-container">
+                    <h2>Registrarse</h2>
+                    <form method="POST">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="username">Usuario</label>
+                            <input type="text" class="form-control" id="username" name="username" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Correo electrónico</label>
+                            <input type="email" class="form-control" id="email" name="email" required>
+                        </div>                        
+                        <div class="form-group">
+                            <label for="password">Contraseña</label>
+                            <input type="password" class="form-control" id="password" name="password" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="confirm_password">Confirmar Contraseña</label>
+                            <input type="password" class="form-control" id="confirm_password" name="confirm_password" required>
+                        </div>
+                        <h3>Datos adicionales</h3>
+                        <div class="form-group">
+                            <label for="patente">Patente del vehículo</label>
+                            <input type="text" class="form-control" id="patente" name="patente" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="nombre_chofer">Nombre del chofer</label>
+                            <input type="text" class="form-control" id="nombre_chofer" name="nombre_chofer" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="telefono_chofer">Teléfono del chofer</label>
+                            <input type="tel" class="form-control" id="telefono_chofer" name="telefono_chofer" required>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary" action="{% url 'succesfully' %}">Registrarse</button>
+                        </div>
+                        {% if messages %}
+                            {% for message in messages %}
+                                <div class="alert alert-danger" role="alert">
+                                    {{ message }}
+                                </div>
+                            {% endfor %}
+                        {% endif %}                 
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#username').val('');
+            $('#password').val('');
+            $('#confirm_password').val('');
+        });
+    </script>
+</body>
+</html>

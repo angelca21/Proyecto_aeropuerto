@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bienvenido(a)</title>
+    {% load static %}
+    <link href="{% static 'css/bootstrap.min.css'%}" type="text/css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
+    <style>
+        body {
+            background-image: url('/static/core/img/aero.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .navbar {
+            background-color: #333;
+            color: #fff;
+        }
+
+        .navbar-brand {
+            color: #fff !important;
+        }
+
+        .welcome-container {
+            margin-top: 100px;
+            text-align: center;
+            color: #fff;
+        }
+
+        .welcome-container h2 {
+            margin-bottom: 30px;
+        }
+
+        .welcome-container img {
+            max-width: 400px;
+            margin-bottom: 20px;
+        }
+
+        .welcome-container p {
+            font-size: 18px;
+            line-height: 1.5;
+        }
+
+        .navbar-nav.ml-auto {
+            margin-left: auto;      
+        }
+
+        .navbar-nav.mr-auto {
+            margin-right: auto;        
+        }
+
+        .navbar-nav li {
+            margin-right: 10px;            
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .form-container {
+            position: relative;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 5px;
+            padding: 20px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <button type="button" class="btn btn-link" onclick="location.href='/'" position="margin-left">Inicio</button>
+            </li>
+            <li class="nav-item">
+                <button type="button" class="btn btn-link" onclick="location.href='/reserve'">Reserva de transfer</button>
+            </li>
+        </ul>
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item" position="margin-right">
+                <div class="language-selector" position="margin-right">
+                    <label for="language-select" class="btn btn-link" position="margin-right">Idioma:</label>
+                    <select id="language-select" position="margin-right">
+                        <option value="es">Español</option>
+                        <option value="en">English</option>
+                        <!-- Agrega más opciones de idioma según tus necesidades -->
+                    </select>
+                </div>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <div class="form-container">
+            <h2>Formulario de Pasajero</h2>
+            <br>
+            <form method="POST" action="{% url 'form_pasajeros' %}" class="form-pasajero">
+                {% csrf_token %}
+                <input type="hidden" name="chofer_id" value="{{ chofer_id }}">
+                <div class="form-group">
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" class="form-control" id="nombre" name="nombre" required>
+                </div>
+                <div class="form-group">
+                    <label for="telefono">Teléfono:</label>
+                    <input type="text" class="form-control" id="telefono" name="telefono" required>
+                </div>
+                <div class="form-group">
+                    <label for="destino">Destino:</label>
+                    <input type="text" class="form-control" id="destino" name="destino" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Enviar</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="{% static 'js/jquery.min.js'%}"></script>
+    <script src="{% static 'js/bootstrap.min.js'%}"></script>
+</body>
+</html>

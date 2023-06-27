@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bienvenido(a)</title>
+    {% load static %}
+    <link href="{% static 'css/bootstrap.min.css'%}" type="text/css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
+    <style>
+        body {
+            background-image: url('/static/core/img/aero.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .navbar {
+            background-color: #333;
+            color: #fff;
+        }
+
+        .navbar-brand {
+            color: #fff !important;
+        }
+
+        .welcome-container {
+            margin-top: 100px;
+            text-align: center;
+            color: #fff;
+        }
+
+        .welcome-container h2 {
+            margin-bottom: 30px;
+        }
+
+        .welcome-container img {
+            max-width: 400px;
+            margin-bottom: 20px;
+        }
+
+        .welcome-container p {
+            font-size: 18px;
+            line-height: 1.5;
+        }
+
+        .navbar-nav.ml-auto {
+            margin-left: auto;      
+        }
+
+        .navbar-nav.mr-auto {
+            margin-right: auto;        
+        }
+
+        .navbar-nav li {
+            margin-right: 10px;            
+        }
+        .logout-link {
+        margin-right: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    
+    <nav class="navbar navbar-expand-lg">
+        {% if user.is_authenticated %}
+        <ul class="navbar-nav mr-auto">
+            
+            <li class="nav-item">
+                <button type="button" class="btn btn-link" onclick="location.href='/'" position="margin-left">Inicio</button> 
+            </li>
+            <li class="nav-item">
+                <button type="button" class="btn btn-link" onclick="location.href='/pasajeros'" position="margin-left">Pasajeros</button>
+            </li>
+        </ul>
+
+        <form action="{% url 'logout' %}" method="post" class="btn btn-link" style="display: flex; justify-content: flex-end;" position="margin-right">
+            {% csrf_token %}
+            <button class="btn btn-link" type="submit">Cerrar sesión</button>
+          </form>
+
+        {% else %}
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <button type="button" class="btn btn-link" onclick="location.href='/'" position="margin-left">Inicio</button>
+            </li>
+        </ul>
+            <li class="nav-item">
+                <button type="button" class="btn btn-link" onclick="location.href='/login'" position="margin-right">Iniciar Sesión</button>
+                <button type="button" class="btn btn-link" onclick="location.href='/register'" position="margin-right">Registrarse</button>
+            </li>
+        
+        {% endif %}
+    </nav>
+
+    <div id="carousel1" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-target="#carousel1" data-slide-to="0" class="active"></li>
+            <li data-target="#carousel1" data-slide-to="1"></li>
+            <li data-target="#carousel1" data-slide-to="2"></li>
+        </ol>
+        <!-- diapositivas -->
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img class="d-block w-100" src="{% static 'core/img/aero2.webp'%}" alt="aeropuerto" style="width: 500px; height: 720px;">
+                <div class="carousel-caption">
+                    <h3>Aeropuerto</h3>
+                    <p>Donde estarán los clientes de nuestra aplicación</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img class="d-block w-100" src="{% static 'core/img/totem.jpg'%}" alt="totem" style="width: 500px; height: 720px;">
+                <div class="carousel-caption">
+                    <h3>Tótem</h3>
+                    <p>Como usarán nuestra aplicación</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img class="d-block w-100" src="{% static 'core/img/chofer.jpg'%}" alt="chofer" style="width: 500px; height: 720px;">
+                <div class="carousel-caption">
+                    <h3>Chofer</h3>
+                    <p>Quienes realizaran la funcionalidad de la aplicación</p>
+                </div>
+            </div>
+        </div>
+        <!-- botones de desplazamiento a izquierda y derecha -->
+        <a class="carousel-control-prev" href="#carousel1" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Anterior</span>
+        </a>
+        <a class="carousel-control-next" href="#carousel1" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Siguiente</span>
+        </a>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Tu código adicional aquí
+        });
+    </script>
+</body>
+</html>
+
